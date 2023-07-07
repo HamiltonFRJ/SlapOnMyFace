@@ -9,11 +9,15 @@
     "eslint-plugin-import": "^2.27.5"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "esbuild --bundle src/main.jsx --outfile=main.js --servedir=./ --watch",
+    "build": "esbuild --bundle src/main.jsx --outfile=main.js "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "eslint-config-prettier": "^8.8.0"
+    "esbuild": "^0.18.11",
+    "eslint-config-prettier": "^8.8.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
