@@ -1,11 +1,13 @@
 import React from 'react';
 
 const Button = () => {
-  function handleClick(event){
-    alert('É um prazer te conhecer.')
+  let status = true;
+
+  function handleClick(){
+    status = !status;
   }
   window.addEventListener('onClick', handleClick);
-  return <button onClick={handleClick}>Clique aqui</button>
+  return <button onClick={handleClick()} className={status ? 'active' : 'unactive'}>Click here!</button>
 }
 
 const Welcome = () =>  {
@@ -13,7 +15,7 @@ const Welcome = () =>  {
     <h1>Welcome to the currigame!</h1>
     <p>Tell me, what is your name?</p>
     <input></input>
-    <Button onclick={({target}) => target.classList.add('ativo')}/>
+    <Button />
     <Representation name='Wilson'></Representation>
   </form>
 }
@@ -26,8 +28,27 @@ const App = () => {
   return (
     <div>
       <Welcome />
+
+      <h2>My car:</h2>
+      <ul style={styleCarList}>
+        <li>Marca: {carro.marca}</li>
+        <li>Modelo: {carro.modelo}</li>
+        <li>Cor: {carro.cor}</li>
+      </ul>
     </div>
   )
+}
+
+const carro = {
+  marca: 'Ford',
+  modelo: 'Ka',
+  cor: 'preto',
+}
+
+const styleCarList  = {
+  color: 'blue',
+  fontSize: '20px',
+  fontFamily: 'TimesNewRoman'
 }
 
 export default App
