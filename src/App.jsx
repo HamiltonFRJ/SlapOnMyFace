@@ -1,13 +1,21 @@
 import React from 'react';
 
 const Button = () => {
-  let status = true;
 
-  function handleClick(){
-    status = !status;
+  const styledButton = {
+    color: "white",
+    fontSize: "1.5rem",
+    backgroundColor: "blue",
+    fontStyle: "Times New Roman",
   }
-  window.addEventListener('onClick', handleClick);
-  return <button onClick={handleClick()} className={status ? 'active' : 'unactive'}>Click here!</button>
+  function handleClick(){
+    return ativo = false;
+  }
+
+  let ativo = true;
+
+
+  return <button className={ativo ? "active" : "unactive"} onClick={handleClick()}>Olá</button>
 }
 
 const Welcome = () =>  {
