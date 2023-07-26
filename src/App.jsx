@@ -21,15 +21,7 @@ const Button = () => {
 const Welcome = () =>  {
   return <form>
     <h1>Welcome to the currigame!</h1>
-    <p>Tell me, what is your name?</p>
-    <input></input>
-    <Button />
-    <Representation name='Wilson'></Representation>
   </form>
-}
-
-const Representation = (properties) => {
-  return <h2>My name is Hamilton, nice to meet you {properties.name} </h2>
 }
 
 const App = () => {
@@ -37,7 +29,7 @@ const App = () => {
     <div>
       <Welcome />
 
-      <h2>My car:</h2>
+      <h2>Hamilton's car:</h2>
       <ul style={styleCarList}>
         <li>Marca: {carro.marca}</li>
         <li>Modelo: {carro.modelo}</li>
@@ -51,12 +43,54 @@ const carro = {
   marca: 'Ford',
   modelo: 'Ka',
   cor: 'preto',
+  ano: '2012',
+  versao: '1.6',
+  interessados: [ 
+    {nome: 'Hamilton', idade: '22'},
+    {nome: 'Joao', idade: '24'},
+    {nome: 'Ana', idade: '25'}
+  ],
+  status: 'vendido',
+}
+
+const proprietario = {
+  clientes: [
+    {
+    nome: 'Hamilton',
+    idade: '22',
+    ultimasCompras: [ 
+    {item: 'kit de pneus phirelli', valor: 'R$ 2200'},
+    {item: 'kit multimidia', valor: 'R$ 1500'},
+    ],
+    comprador: 'ativo',
+    },
+    {
+    nome: 'Joao',
+    idade: '24',
+    ultimasCompras: [ 
+    {item: 'capa de couro para banco', valor: 'R$ 2500'},
+    {item: 'limpador de parabrisa', valor: 'R$ 100'},
+    ],
+    comprador: 'inativo',
+    },
+    {
+    nome: 'Ana',
+    idade: '25',
+    ultimasCompras: [ 
+    {item: 'cheiro para interior', valor: 'R$ 20'},
+    {item: 'servico pintura completa - prata', valor: 'R$ 4000'},
+    ],
+    comprador: 'inativo',
+    },
+  ]
 }
 
 const styleCarList  = {
-  color: 'blue',
+  color: 'white',
   fontSize: '20px',
-  fontFamily: 'TimesNewRoman'
+  fontFamily: 'TimesNewRoman',
+  backgroundColor: 'black',
+  borderRadius: '0.05rem',
 }
 
 export default App
