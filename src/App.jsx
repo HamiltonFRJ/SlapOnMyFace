@@ -29,13 +29,21 @@ const App = () => {
     <div>
       <Welcome />
 
-      <h2>Hamilton's car:</h2>
+      <h2>Hamilton`s car:</h2>
       <ul style={styleCarList}>
         <li>Marca: {carro.marca}</li>
         <li>Modelo: {carro.modelo}</li>
         <li>Cor: {carro.cor}</li>
       </ul>
     </div>
+  )
+}
+
+const ApresentacaoCarro = () => {
+  return (
+  <div>
+    <p></p>
+  </div>
   )
 }
 
