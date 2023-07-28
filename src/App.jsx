@@ -1,23 +1,5 @@
 import React from 'react';
 
-const Button = () => {
-
-  const styledButton = {
-    color: "white",
-    fontSize: "1.5rem",
-    backgroundColor: "blue",
-    fontStyle: "Times New Roman",
-  }
-  function handleClick(){
-    return ativo = false;
-  }
-
-  let ativo = true;
-
-
-  return <button className={ativo ? "active" : "unactive"} onClick={handleClick()}>Olá</button>
-}
-
 const Welcome = () =>  {
   return <form>
     <h1>Welcome to the currigame!</h1>
@@ -25,25 +7,23 @@ const Welcome = () =>  {
 }
 
 const App = () => {
+  const selecionado = proprietario.clientes[0]; // Selecione o cliente alterando o número na constante
+
+  // Obtem o tatal de valores gastos pelo cliente, transformando string em number e somando
+  const totalGasto = selecionado.ultimasCompras
+    .map((item) => Number(item.valor.replace('R$ ', '')))// Troca da String para Number
+    .reduce((a, b) => a + b);
+
   return (
     <div>
       <Welcome />
 
-      <h2>Hamilton`s car:</h2>
-      <ul style={styleCarList}>
-        <li>Marca: {carro.marca}</li>
-        <li>Modelo: {carro.modelo}</li>
-        <li>Cor: {carro.cor}</li>
-      </ul>
+      <p>Nome: {selecionado.nome}</p>
+      <p>Idade: {selecionado.idade}</p>
+      <p>Comprador: <span style={{color: selecionado.status ? 'green' : 'red'}}>{selecionado.status ? 'Ativo' : 'Inativo'}</span></p>
+      <p>Ultima compra: R$ {totalGasto}</p>
+      <p style={{display: totalGasto <= 3000 ? '' : ''}}><span>Situação: Alto gasto</span></p>
     </div>
-  )
-}
-
-const ApresentacaoCarro = () => {
-  return (
-  <div>
-    <p></p>
-  </div>
   )
 }
 
@@ -70,7 +50,7 @@ const proprietario = {
     {item: 'kit de pneus phirelli', valor: 'R$ 2200'},
     {item: 'kit multimidia', valor: 'R$ 1500'},
     ],
-    comprador: 'ativo',
+    status: true,
     },
     {
     nome: 'Joao',
@@ -79,7 +59,7 @@ const proprietario = {
     {item: 'capa de couro para banco', valor: 'R$ 2500'},
     {item: 'limpador de parabrisa', valor: 'R$ 100'},
     ],
-    comprador: 'inativo',
+    status: false,
     },
     {
     nome: 'Ana',
@@ -88,17 +68,9 @@ const proprietario = {
     {item: 'cheiro para interior', valor: 'R$ 20'},
     {item: 'servico pintura completa - prata', valor: 'R$ 4000'},
     ],
-    comprador: 'inativo',
+    status: false,
     },
   ]
-}
-
-const styleCarList  = {
-  color: 'white',
-  fontSize: '20px',
-  fontFamily: 'TimesNewRoman',
-  backgroundColor: 'black',
-  borderRadius: '0.05rem',
 }
 
 export default App
