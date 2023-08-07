@@ -6,70 +6,67 @@ const Welcome = () =>  {
   </form>
 }
 
-const App = () => {
-  const selecionado = proprietario.clientes[0]; // Selecione o cliente alterando o número na constante
+const PersonalData = () => {
+  const personal = client.personalInfo;
 
+  return console.log(personal);
+}
+
+const App = () => {
   // Obtem o tatal de valores gastos pelo cliente, transformando string em number e somando
-  const totalGasto = selecionado.ultimasCompras
-    .map((item) => Number(item.valor.replace('R$ ', '')))// Troca da String para Number
+  const totalGasto = client.shopping
+    .map((item) => Number(item.price.replace('R$ ', '')))// Troca da String para Number
     .reduce((a, b) => a + b);
 
   return (
     <div>
       <Welcome />
-
-      <p>Nome: {selecionado.nome}</p>
-      <p>Idade: {selecionado.idade}</p>
-      <p>Comprador: <span style={{color: selecionado.status ? 'green' : 'red'}}>{selecionado.status ? 'Ativo' : 'Inativo'}</span></p>
-      <p>Ultima compra: R$ {totalGasto}</p>
-      <p style={{display: totalGasto <= 3000 ? '' : ''}}><span>Situação: Alto gasto</span></p>
+      <PersonalData />
     </div>
   )
 }
 
-const carro = {
-  marca: 'Ford',
-  modelo: 'Ka',
-  cor: 'preto',
-  ano: '2012',
-  versao: '1.6',
-  interessados: [ 
-    {nome: 'Hamilton', idade: '22'},
-    {nome: 'Joao', idade: '24'},
-    {nome: 'Ana', idade: '25'}
+const client = {
+  personalInfo: [
+    {
+      name: "Hamilton",
+      secondName: "Francisco",
+      age: 22,
+      mail: "hrfj@hfrj.com",
+      maritalStatus: "single",
+    }
   ],
-  status: 'vendido',
-}
-
-const proprietario = {
-  clientes: [
+  paymentHistoric: [
     {
-    nome: 'Hamilton',
-    idade: '22',
-    ultimasCompras: [ 
-    {item: 'kit de pneus phirelli', valor: 'R$ 2200'},
-    {item: 'kit multimidia', valor: 'R$ 1500'},
-    ],
-    status: true,
+      ticketId: 27361782,
+      inTime: true,
     },
     {
-    nome: 'Joao',
-    idade: '24',
-    ultimasCompras: [ 
-    {item: 'capa de couro para banco', valor: 'R$ 2500'},
-    {item: 'limpador de parabrisa', valor: 'R$ 100'},
-    ],
-    status: false,
+      ticketId: 12986381,
+      inTime: true,
     },
     {
-    nome: 'Ana',
-    idade: '25',
-    ultimasCompras: [ 
-    {item: 'cheiro para interior', valor: 'R$ 20'},
-    {item: 'servico pintura completa - prata', valor: 'R$ 4000'},
-    ],
-    status: false,
+      ticketId: 24893169,
+      inTime: true,
     },
+    {
+      ticketId: 9821836,
+      inTime: true,
+    }
+  ],
+  shopping: [ 
+    {
+      item: 'kit de pneus phirelli', price: 'R$ 2200', ticketId: 27361782,
+    },
+    {
+      item: 'kit multimidia', price: 'R$ 1500', ticketId: 12986381,
+    },
+    {
+      item: 'limpador de parabrisa', price: 'R$ 100', ticketId: 24893169,
+    },
+    {
+      item: 'cheiro para interior', price: 'R$ 20', ticketId: 9821836,
+    }
   ]
 }
 
