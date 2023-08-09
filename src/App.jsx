@@ -7,9 +7,9 @@ const Welcome = () =>  {
 }
 
 const PersonalData = () => {
-  const personal = client.personalInfo;
+  const {name, secondName, age, mail} = client.personalInfo;
 
-  return console.log(personal);
+  return console.log(name + ' ' + secondName);
 }
 
 const App = () => {
@@ -20,22 +20,19 @@ const App = () => {
 
   return (
     <div>
-      <Welcome />
       <PersonalData />
     </div>
   )
 }
 
 const client = {
-  personalInfo: [
-    {
+  personalInfo: {
       name: "Hamilton",
       secondName: "Francisco",
       age: 22,
       mail: "hrfj@hfrj.com",
       maritalStatus: "single",
-    }
-  ],
+  },
   paymentHistoric: [
     {
       ticketId: 27361782,
