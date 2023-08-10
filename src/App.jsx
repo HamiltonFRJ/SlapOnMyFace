@@ -9,7 +9,27 @@ const Welcome = () =>  {
 const PersonalData = () => {
   const {name, secondName, age, mail} = client.personalInfo;
 
-  return console.log(name + ' ' + secondName);
+  return (
+    <div>
+      <p>Client: {name + ' ' + secondName}</p>
+      <p>Age: {age}</p>
+      <p>Contact: {mail}</p>
+    </div>
+  )
+}
+
+const Historic = () => {
+  const {gender} = client.personalInfo;
+
+  const shoppingTickets = client.paymentHistoric
+    .map((item) => item.inTime ? true : false)
+    .reduce((a, b) => a * b);
+
+  return (
+    <p style={{color: shoppingTickets ? "green" : "red"}}>
+      {gender === "female" ? "She" : "He"} is a {shoppingTickets ? 'good payer' : 'bad buyer'}
+    </p>
+  )
 }
 
 const App = () => {
@@ -20,7 +40,9 @@ const App = () => {
 
   return (
     <div>
+      <Welcome />
       <PersonalData />
+      <Historic />
     </div>
   )
 }
@@ -30,24 +52,25 @@ const client = {
       name: "Hamilton",
       secondName: "Francisco",
       age: 22,
+      gender: "male",
       mail: "hrfj@hfrj.com",
       maritalStatus: "single",
   },
   paymentHistoric: [
     {
-      ticketId: 27361782,
+      ticketId: "27361782",
       inTime: true,
     },
     {
-      ticketId: 12986381,
+      ticketId: "12986381",
       inTime: true,
     },
     {
-      ticketId: 24893169,
+      ticketId: "24893169",
       inTime: true,
     },
     {
-      ticketId: 9821836,
+      ticketId: "9821836",
       inTime: true,
     }
   ],
