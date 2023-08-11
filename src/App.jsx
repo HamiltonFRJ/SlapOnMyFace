@@ -43,6 +43,10 @@ const App = () => {
       <Welcome />
       <PersonalData />
       <Historic />
+      <div>
+        <h2>Total value spent</h2>
+        <p style={{color: totalGasto > 3500 ? "green" : "yellow", backgroundColor:"black", margin:"5px"}}>R$ {totalGasto}</p>
+      </div>
     </div>
   )
 }
