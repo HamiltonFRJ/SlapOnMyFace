@@ -21,32 +21,40 @@ const PersonalData = () => {
 const Historic = () => {
   const {gender} = client.personalInfo;
 
-  const shoppingTickets = client.paymentHistoric
-    .map((item) => item.inTime ? true : false)
-    .reduce((a, b) => a * b);
-
-  return (
-    <p style={{color: shoppingTickets ? "green" : "red"}}>
-      {gender === "female" ? "She" : "He"} is a {shoppingTickets ? 'good payer' : 'bad buyer'}
-    </p>
-  )
-}
-
-const App = () => {
   // Obtem o tatal de valores gastos pelo cliente, transformando string em number e somando
   const totalGasto = client.shopping
     .map((item) => Number(item.price.replace('R$ ', '')))// Troca da String para Number
     .reduce((a, b) => a + b);
+
+  const shoppingTickets = client.paymentHistoric
+    .map((item) => item.inTime ? true : false)
+    .reduce((a, b) => a * b);
+
+  const lastBoughts = client.shopping
+    .map((item) => <li>{item.item}</li>);
+
+  return (
+  <div>
+    <h2>Last Boughts</h2>
+    <ul>
+      {lastBoughts}
+    </ul>
+    <p style={{color: shoppingTickets ? "green" : "red"}}>
+  {gender === "female" ? "She" : "He"} is a {shoppingTickets ? 'good payer' : 'bad buyer'}
+    </p>
+      <h3>Total value spent</h3>
+      <p style={{color: totalGasto > 3500 ? "green" : "yellow", backgroundColor:"black", margin:"5px"}}>R$ {totalGasto}</p>
+  </div>
+  )
+}
+
+const App = () => {
 
   return (
     <div>
       <Welcome />
       <PersonalData />
       <Historic />
-      <div>
-        <h2>Total value spent</h2>
-        <p style={{color: totalGasto > 3500 ? "green" : "yellow", backgroundColor:"black", margin:"5px"}}>R$ {totalGasto}</p>
-      </div>
     </div>
   )
 }
