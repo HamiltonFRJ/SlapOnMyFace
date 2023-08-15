@@ -74,7 +74,7 @@ const Historic = () => {
     .reduce((a, b) => a * b);
 
   const lastBoughts = client.shopping
-    .map((item) => <li>{item.item}</li>);
+    .map((item) => <li>{item.item} - {item.price}</li>);
 
   return (
   <div>
