@@ -91,6 +91,32 @@ const Historic = () => {
   )
 }
 
+const CheckBoughts = () => {
+  const payments = client.paymentHistoric
+  .map((ticket) => Number(ticket.ticketId));
+
+  const boughts = client.shopping
+  .map((ticket) => Number(ticket.ticketId));
+
+  const VerifyTickets = () => {
+    for (let i = 0; i < boughts.length; i++){
+      if(boughts[i] !== payments[i]){
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  return (
+  <div>
+    <h1>The last boughts ID`s of user was verified</h1>
+    <h2 style={{color: VerifyTickets() ? "green" : "red", fontWeight: "bold"}}>
+      {VerifyTickets() ? "User up to date!" : "Theres something wrong!"}
+    </h2>
+  </div>
+  )
+}
+
 const App = () => {
 
   return (
@@ -98,6 +124,7 @@ const App = () => {
       <Welcome />
       <PersonalData />
       <Historic />
+      <CheckBoughts />
     </div>
   )
 }
