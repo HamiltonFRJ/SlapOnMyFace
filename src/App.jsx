@@ -82,11 +82,11 @@ const Historic = () => {
     <ul>
       {lastBoughts}
     </ul>
-    <p style={{color: shoppingTickets ? "green" : "red"}}>
+    <h3 style={{color: shoppingTickets ? "green" : "red", fontWeight: "bold"}}>
   {gender === "female" ? "She" : "He"} is a {shoppingTickets ? 'good payer' : 'bad buyer'}
-    </p>
-      <h3>Total value spent</h3>
-      <p style={{color: totalGasto > 3500 ? "green" : "yellow", backgroundColor:"black", margin:"5px"}}>R$ {totalGasto}</p>
+    </h3>
+      <h3 style={{fontWeight: "bold"}}>Total value spent</h3>
+      <p style={{color: totalGasto > 3500 ? "green" : "yellow", backgroundColor:"black", fontWeight: "bold"}}>R$ {totalGasto}</p>
   </div>
   )
 }
@@ -110,9 +110,9 @@ const CheckBoughts = () => {
   return (
   <div>
     <h1>The last boughts ID`s of user was verified</h1>
-    <h2 style={{color: VerifyTickets() ? "green" : "red", fontWeight: "bold"}}>
+    <h3 style={{color: VerifyTickets() ? "green" : "red", fontWeight: "bold"}}>
       {VerifyTickets() ? "User up to date!" : "Theres something wrong!"}
-    </h2>
+    </h3>
   </div>
   )
 }
